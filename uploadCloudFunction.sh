@@ -1,0 +1,1 @@
+"/Applications/wechatwebdevtools.app/Contents/MacOS/cli" cloud functions deploy --e env-0glfk94n26eebb18 --n quickstartFunctions --r --project "/Users/meiwang/WeChatProjects/longfei_data" --report

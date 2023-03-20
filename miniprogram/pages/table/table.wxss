@@ -1,0 +1,57 @@
+/* pages/table/table.wxss */page {
+    background: var(--tintBac);
+}
+.filter {
+    display: flex;
+    flex-direction: column;
+    background-color: greenyellow;
+    padding: 40rpx var(--titlePadding);
+    margin-bottom: 20rpx;
+}
+.filter_2 {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 40rpx var(--titlePadding);
+    margin-bottom: 20rpx;
+}
+.cells {
+    padding-top: 20rpx;
+}
+
+.cell {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 40rpx var(--titlePadding);
+    margin-bottom: 20rpx;
+}
+
+.titles {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20rpx;
+}
+
+.title-name {
+    font-size: 30rpx;
+    font-weight: bold;
+    min-width: 150rpx;
+}
+
+.title {
+    color: var(--commonHint);
+    margin-left: 50 rpx;
+    word-break:break-all;
+}
+.action{
+    display: flex;
+    height: var(--textHeight);
+    color: var(--themeColor);
+    background: var(--white);
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--textHeight);
+    border: 1rpx solid var(--themeColor);
+    box-sizing: border-box;
+}

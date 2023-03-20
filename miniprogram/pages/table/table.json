@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "scroll": "/components/scroll/scroll"
+  },
+  "navigationBarTitleText": "数据内容",
+  "disableScroll": true,
+  "backgroundTextStyle": "dark"
+}

@@ -1,0 +1,53 @@
+<!--pages/table/table.wxml-->
+<view class="out">
+    <view class = "{{bean1.check?'filter':'filter_2'}}" bindtap="check1">{{bean1.text}}</view>
+    <view class = "{{bean2.check?'filter':'filter_2'}}" bindtap="check2">{{bean2.text}}</view>
+    <scroll requesting="{{mData.requesting}}"
+            scrollTop="{{scrollTop}}"
+            end="{{mData.end}}"
+            empty-show="{{mData.emptyShow}}"
+            list-count="{{mData.listData.length}}" top-size="0" bottom-size="{{0}}" bind:refresh="refresh"
+            style="padding-top: 0rpx">
+        <view class="cells">
+            <view class="cell" wx:for="{{listData}}" wx:key="index" bindtap="articleDetail">
+                <view class="titles">
+                    <view class="title-name">{{mData.titleA}}</view>
+                    <view class="title">{{item.rowA}}</view>
+                </view>
+                <view class="titles">
+                    <view class="title-name">{{mData.titleB}}</view>
+                    <view class="title">{{item.rowB}}</view>
+                </view>
+
+                <view class="titles">
+                    <view class="title-name">{{mData.titleC}}</view>
+                    <view class="title">{{item.rowC}}</view>
+                </view>
+                <view class="titles">
+                    <view class="title-name">{{mData.titleD}}</view>
+                    <view class="title">{{item.rowD}}</view>
+                </view>
+                <view class="titles">
+                    <view class="title-name">{{mData.titleE}}</view>
+                    <view class="title">{{item.rowE}}</view>
+                </view>
+                <view class="titles">
+                    <view class="title-name">{{mData.titleF}}</view>
+                    <view class="title">{{item.rowF}}</view>
+                </view>
+                <view class="titles">
+                    <view class="title-name">{{mData.titleG}}</view>
+                    <view class="title">{{item.rowG}}</view>
+                </view>
+                <view class="titles">
+                    <view class="title-name">{{mData.titleH}}</view>
+                    <view class="title">{{item.rowH}}</view>
+                </view>
+                <view class="titles">
+                    <view class="title-name">{{mData.titleT}}</view>
+                    <view class="title">{{item.rowT}}</view>
+                </view>
+            </view>
+        </view>
+    </scroll>
+</view>
