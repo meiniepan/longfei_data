@@ -1,8 +1,8 @@
 {
   "usingComponents": {
-    "scroll": "/components/scroll/scroll"
+    "scroll": "/components/scroll/scroll",
+    "emptyView": "/components/emptyView/emptyView",
+    "navigation": "/components/navigation/navigation"
   },
-  "navigationBarTitleText": "数据内容",
-  "disableScroll": true,
-  "backgroundTextStyle": "dark"
+  "navigationBarTitleText": "筛一筛"
 }

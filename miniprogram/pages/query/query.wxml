@@ -1,0 +1,174 @@
+<!--pages/query/query.wxml-->
+<view class="out">
+    <view class="search-area">
+        <image style="width: 28rpx;height: 28rpx" mode="heightFix" src="../../images/ic_search.png"></image>
+        <input class="search hint singleLine" value="{{number}}" maxlength="20" placeholder="搜索调度表编号" bindinput="doInput"
+               bindconfirm="doSearch" confirm-type="search" data-type="realname"/>
+    </view>
+    <emptyView wx:if="{{isEmpty}}"/>
+    <view class="cell-list" wx:if="{{!isEmpty}}" bindtap="">
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleA}}</view>
+            <view class="title">{{mData.rowA}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleB}}</view>
+            <view class="title">{{mData.rowB}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleC}}</view>
+            <view class="title">{{mData.rowC}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleD}}</view>
+            <view class="title">{{mData.rowD}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleE}}</view>
+            <view class="title">{{mData.rowE}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleF}}</view>
+            <view class="title">{{mData.rowF}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleG}}</view>
+            <view class="title">{{mData.rowG}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleH}}</view>
+            <view class="title">{{mData.rowH}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleI}}</view>
+            <view class="title">{{mData.rowI}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleJ}}</view>
+            <view class="title">{{mData.rowJ}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleK}}</view>
+            <view class="title">{{mData.rowK}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleL}}</view>
+            <view class="title">{{mData.rowL}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleM}}</view>
+            <view class="title">{{mData.rowM}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleN}}</view>
+            <view class="title">{{mData.rowN}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleO}}</view>
+            <view class="title">{{mData.rowO}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleP}}</view>
+            <view class="title">{{mData.rowP}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleQ}}</view>
+            <view class="title">{{mData.rowQ}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleR}}</view>
+            <view class="title">{{mData.rowR}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleS}}</view>
+            <view class="title">{{mData.rowS}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleT}}</view>
+            <view class="title">{{mData.rowT}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleU}}</view>
+            <view class="title">{{mData.rowU}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleV}}</view>
+            <view class="title">{{mData.rowV}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleW}}</view>
+            <view class="title">{{mData.rowW}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleX}}</view>
+            <view class="title">{{mData.rowX}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleY}}</view>
+            <view class="title">{{mData.rowY}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleZ}}</view>
+            <view class="title">{{mData.rowZ}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleAA}}</view>
+            <view class="title">{{mData.rowAA}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleAB}}</view>
+            <view class="title">{{mData.rowAB}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleAC}}</view>
+            <view class="title">{{mData.rowAC}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleAD}}</view>
+            <view class="title">{{mData.rowAD}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleAE}}</view>
+            <view class="title">{{mData.rowAE}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleAF}}</view>
+            <view class="title">{{mData.rowAF}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleAG}}</view>
+            <view class="title">{{mData.rowAG}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleAH}}</view>
+            <view class="title">{{mData.rowAH}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleAI}}</view>
+            <view class="title">{{mData.rowAI}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleAJ}}</view>
+            <view class="title">{{mData.rowAJ}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleAK}}</view>
+            <view class="title">{{mData.rowAK}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleAL}}</view>
+            <view class="title">{{mData.rowAL}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleAM}}</view>
+            <view class="title">{{mData.rowAM}}</view>
+        </view>
+        <view class="titles-list">
+            <view class="title-name">{{mData.titleAN}}</view>
+            <view class="title">{{mData.rowAN}}</view>
+        </view>
+
+    </view>
+    <view class="b" >Powered By Solang</view>
+</view>
+

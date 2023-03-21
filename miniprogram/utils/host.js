@@ -8,3 +8,4 @@ module.exports = {
     BASE_URL_DEV: BASE_URL_DEV,
     themeColor: themeColor,
 }
+

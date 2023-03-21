@@ -19,6 +19,12 @@ Page({
     onReady: function () {
 
     },
+
+    queryId() {
+        wx.navigateTo({
+            url: '/pages/query/query',
+        })
+    },
     upload() {
         wx.chooseMessageFile({
             count: 1,

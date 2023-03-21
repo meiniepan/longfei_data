@@ -1,53 +1,137 @@
 <!--pages/table/table.wxml-->
 <view class="out">
-    <view class = "{{bean1.check?'filter':'filter_2'}}" bindtap="check1">{{bean1.text}}</view>
-    <view class = "{{bean2.check?'filter':'filter_2'}}" bindtap="check2">{{bean2.text}}</view>
-    <scroll requesting="{{mData.requesting}}"
-            scrollTop="{{scrollTop}}"
-            end="{{mData.end}}"
-            empty-show="{{mData.emptyShow}}"
-            list-count="{{mData.listData.length}}" top-size="0" bottom-size="{{0}}" bind:refresh="refresh"
-            style="padding-top: 0rpx">
-        <view class="cells">
-            <view class="cell" wx:for="{{listData}}" wx:key="index" bindtap="articleDetail">
-                <view class="titles">
-                    <view class="title-name">{{mData.titleA}}</view>
-                    <view class="title">{{item.rowA}}</view>
-                </view>
-                <view class="titles">
-                    <view class="title-name">{{mData.titleB}}</view>
-                    <view class="title">{{item.rowB}}</view>
-                </view>
 
-                <view class="titles">
-                    <view class="title-name">{{mData.titleC}}</view>
-                    <view class="title">{{item.rowC}}</view>
+    <view class="title-0" bindtap="clearAll">
+        <view class="filter" bindtap="">筛选</view>
+        <image class="brush" src="../../images/ic_brush.png" mode="aspectFill"/>
+    </view>
+    <view class="cells-filter">
+        <view class="cell-filter" wx:for="{{filterData}}" wx:key="index" data-index="{{index}}" catchtap="queryFilter">
+            <view class="titles">
+                <view class="title-1" catchtap="clearPosition" data-index="{{index}}">
+                    <view class="title-name">{{item.title}}</view>
+                    <image class="brush" hidden="{{!(item.val.length>0)}}" src="../../images/ic_brush.png"
+                           mode="aspectFill"/>
                 </view>
-                <view class="titles">
-                    <view class="title-name">{{mData.titleD}}</view>
-                    <view class="title">{{item.rowD}}</view>
-                </view>
-                <view class="titles">
-                    <view class="title-name">{{mData.titleE}}</view>
-                    <view class="title">{{item.rowE}}</view>
-                </view>
-                <view class="titles">
-                    <view class="title-name">{{mData.titleF}}</view>
-                    <view class="title">{{item.rowF}}</view>
-                </view>
-                <view class="titles">
-                    <view class="title-name">{{mData.titleG}}</view>
-                    <view class="title">{{item.rowG}}</view>
-                </view>
-                <view class="titles">
-                    <view class="title-name">{{mData.titleH}}</view>
-                    <view class="title">{{item.rowH}}</view>
-                </view>
-                <view class="titles">
-                    <view class="title-name">{{mData.titleT}}</view>
-                    <view class="title">{{item.rowT}}</view>
-                </view>
+                <view class="title">{{item.val}}</view>
+            </view>
+
+        </view>
+    </view>
+    <view class="result" bindtap="">结果</view>
+    <view class="cell-all" wx:if="{{!isEmpty}}">
+        <view class="titles">
+            <view class="title-sum">合计</view>
+        </view>
+        <view class="titles-all">
+            <view class="title-name">{{mData[0].name}}</view>
+            <view class="title-all">{{dataTotal.list[0].value_0}}</view>
+        </view>
+        <view class="titles-all">
+            <view class="title-name">{{mData[1].name}}</view>
+            <view class="title-all">{{dataTotal.list[0].value_1}}</view>
+        </view>
+
+        <view class="titles-all">
+            <view class="title-name">{{mData[2].name}}</view>
+            <view class="title-all">{{dataTotal.list[0].value_2}}</view>
+        </view>
+        <view class="titles-all">
+            <view class="title-name">{{mData[3].name}}</view>
+            <view class="title-all">{{dataTotal.list[0].value_3}}</view>
+        </view>
+        <view class="titles-all">
+            <view class="title-name">{{mData[4].name}}</view>
+            <view class="title-all">{{dataTotal.list[0].value_4}}</view>
+        </view>
+        <view class="titles-all">
+            <view class="title-name">{{mData[5].name}}</view>
+            <view class="title-all">{{dataTotal.list[0].value_5}}</view>
+        </view>
+        <view class="titles-all">
+            <view class="title-name">{{mData[6].name}}</view>
+            <view class="title-all">{{dataTotal.list[0].value_6}}</view>
+        </view>
+        <view class="titles-all">
+            <view class="title-name">{{mData[7].name}}</view>
+            <view class="title-all">{{dataTotal.list[0].value_7}}</view>
+        </view>
+    </view>
+    <emptyView wx:if="{{isEmpty}}"/>
+    <scroll-view class="cells-page" wx:if="{{pageData.length>1}}" enable-flex scroll-x>
+        <view class="cell-page" wx:for="{{pageData}}" wx:key="index" data-index="{{index}}" catchtap="queryPage">
+                <view class="{{item.checked?'title-page-checked':'title-page'}}">{{item.name}}</view>
+        </view>
+    </scroll-view>
+    <view class="cells-list">
+        <view class="cell-list" wx:for="{{listData}}" wx:key="index" data-num="{{item.value_8}}" bindtap="queryDetail">
+            <view class="titles-list">
+                <view class="title-name">{{mData[8].name}}</view>
+                <view class="title">{{item.value_8}}</view>
+            </view>
+            <view class="titles-list">
+                <view class="title-name">{{mData[0].name}}</view>
+                <view class="title">{{item.value_0}}</view>
+            </view>
+            <view class="titles-list">
+                <view class="title-name">{{mData[1].name}}</view>
+                <view class="title">{{item.value_1}}</view>
+            </view>
+
+            <view class="titles-list">
+                <view class="title-name">{{mData[2].name}}</view>
+                <view class="title">{{item.value_2}}</view>
+            </view>
+            <view class="titles-list">
+                <view class="title-name">{{mData[3].name}}</view>
+                <view class="title">{{item.value_3}}</view>
+            </view>
+            <view class="titles-list">
+                <view class="title-name">{{mData[4].name}}</view>
+                <view class="title">{{item.value_4}}</view>
+            </view>
+            <view class="titles-list">
+                <view class="title-name">{{mData[5].name}}</view>
+                <view class="title">{{item.value_5}}</view>
+            </view>
+            <view class="titles-list">
+                <view class="title-name">{{mData[6].name}}</view>
+                <view class="title">{{item.value_6}}</view>
+            </view>
+            <view class="titles-list">
+                <view class="title-name">{{mData[7].name}}</view>
+                <view class="title">{{item.value_7}}</view>
             </view>
         </view>
-    </scroll>
+    </view>
+    <view class="b" >Powered By Solang</view>
 </view>
+<page-container
+        show="{{show}}"
+        overlay="{{overlay}}"
+        close-on-slide-down
+        duration="300"
+        position="bottom"
+        z-index="999"
+        round
+        bindclickoverlay="onClickOverlay"
+        overlayStyle='z-index:99'
+        customStyle='z-index:999'
+>
+    <view wx:if="{{show}}" class="layout0">
+            <scroll-view class="cells-bottom" enable-flex scroll-y>
+            <view class="cell-bottom" wx:for="{{filterData[filterPosition].checkData}}" wx:key="index"
+                  data-index="{{index}}" bindtap="checkRule">
+                <view>
+                    {{item.display}}
+                </view>
+                <image wx:if="{{item.checked}}" class="image-bottom" mode="heightFix"
+                       src="../../images/ic_check_multi.png"/>
+            </view>
+        </scroll-view>
+        <view class="layout1">
+            <view class="btn1" bindtap="doBtn1">取消</view>
+            <view class="btn2" bindtap="doBtn2">确定</view>
+        </view>
+    </view>
+</page-container>
