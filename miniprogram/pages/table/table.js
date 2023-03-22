@@ -7,6 +7,8 @@ const ALL = "全选"
 let collectionName = "meta_info"
 let filterPosition = 0
 let page = 0
+let totalFilterPage = 0
+let filterPage = 0
 let page_last = 0
 let pageSize = 20
 
@@ -17,7 +19,7 @@ Page({
      */
     data: {
         isEmpty: true,
-        pageData:[],
+        pageData: [],
         filterPosition: 0,
         mData: [
             {name: "电站个数", val: ""},
@@ -69,7 +71,7 @@ Page({
             listData = JSON.parse(listData)
             let isEmpty = true
             if (listData.length > 0) {
-                 isEmpty = false
+                isEmpty = false
             }
             this.setData({
                 listData,
@@ -88,7 +90,6 @@ Page({
                 pageData,
             })
         }
-        console.log("filterData",filterData)
     },
     doFinish() {
         wx.navigateBack({
@@ -96,22 +97,19 @@ Page({
         })
     },
     setStorageFilter() {
-        console.log("filter_data", this.data.filterData)
         wx.setStorageSync('filter_data', JSON.stringify(this.data.filterData))
     },
     setStoragePage() {
-        console.log("page_data", this.data.pageData)
         wx.setStorageSync('page_data', JSON.stringify(this.data.pageData))
     },
     setStorageResult() {
-        console.log("result_data", this.data.listData)
         wx.setStorageSync('result_data', JSON.stringify(this.data.listData))
         wx.setStorageSync('total_data', JSON.stringify(this.data.dataTotal))
     },
     queryPage(e) {
         let index = e.currentTarget.dataset.index
         page = index
-        if (page!=page_last) {
+        if (page != page_last) {
             let pageData = this.data.pageData
             pageData.forEach(it => {
                 it.checked = false
@@ -119,33 +117,87 @@ Page({
             pageData[index].checked = true
             this.filterList()
             page_last = page
-        }
-    },
-    queryFilter(e) {
-        filterPosition = e.currentTarget.dataset.index
-        console.log("queryFilter", filterPosition)
-        this.setData({
-            filterPosition,
-        })
-        if (this.data.filterData[filterPosition].checkData == null) {
-            this.getList()
-        } else {
             this.setData({
-                show: true,
-                overlay: true,
+                pageData,
             })
         }
     },
+     async queryFilter(e) {
+         filterPosition = e.currentTarget.dataset.index
+         this.setData({
+             filterPosition,
+         })
+         if (isEmpty(this.data.filterData[filterPosition].val)) {
+             this.data.filterData[filterPosition].checkData = []
+             let condition = {}
+             let n = 0
+             if (filterPosition == 5 || filterPosition == 7) {  //县、小类
+                 let it = this.data.filterData[filterPosition - 1].checkData
+                 if (it != null) {
+                     let array = []
+                     it.forEach(it2 => {
+                         if (it2.name != ALL) {
+                             if (it2.checked) {
+                                 n++
+                                 array.push(it2.name)
+                             }
+                         }
+                     })
+                     if (n > 0) {
+                         condition.parent = _.or(array)
+                     } else {
+                         // condition = null
+                     }
+
+                 } else {
+                     // condition = null
+                 }
+             } else {
+                 // condition = null
+             }
+             wx.showLoading({
+                 title: '加载中',
+             })
+             await this.listSum(condition)
+             filterPage = 0
+             console.log("totalFilterPage", totalFilterPage)
+             if (totalFilterPage>0) {
+                 for (let i = 0; i < totalFilterPage; i++) {
+                     console.log("for", i)
+                     this.getList(condition)
+                     filterPage++
+                 }
+             } else {
+                 wx.showToast({
+                     icon: 'none',
+                     title: '没有相应筛选条件'
+                 })
+             }
+             wx.hideLoading()
+
+         } else {
+             if (this.data.filterData[filterPosition].checkData.length > 0) {
+                 this.setData({
+                     show: true,
+                     overlay: true,
+                 })
+             } else {
+                 wx.showToast({
+                     icon: 'none',
+                     title: '没有相应筛选条件'
+                 })
+             }
+         }
+     },
     checkRule(e) {
         let v = this.data.filterData[filterPosition].checkData
-        console.log("checkRule", v)
         let index = e.currentTarget.dataset.index
         v[index].checked = !v[index].checked
         if (index == 0) {
             v.forEach(it => {
                 it.checked = v[0].checked
             })
-        }else {
+        } else {
             if (!v[index].checked) {
                 v[0].checked = false
             }
@@ -198,6 +250,8 @@ Page({
                 overlay: false,
                 filterData: this.data.filterData,
             }, () => {
+                page = 0
+                this.filterSum()
                 this.filterList()
             })
         } else {
@@ -210,19 +264,19 @@ Page({
 
     clearPosition(e) {
         let index = e.currentTarget.dataset.index
-        console.log("clearPosition", index)
         let v = this.data.filterData[index]
 
         v.val = ''
+        v.checkData = null
         this.setData({
             filterData: this.data.filterData,
         })
     },
     clearAll() {
         let v = this.data.filterData
-        console.log("clearAll", v)
         v.forEach(it => {
             it.val = ''
+            it.checkData = null
         })
         this.setData({
             filterData: this.data.filterData,
@@ -243,67 +297,79 @@ Page({
     onShow: function () {
 
     },
-    getList(aa, lastid) {
 
-        // 查询当前用户所有的 counters
+    async listSum(condition) {
 
-        wx.showLoading({
-            title: '加载中',
+        let count = await db.collection(this.data.filterData[filterPosition].table)
+            .where(condition)
+            .count()
+        count = count.total
+         totalFilterPage = Math.ceil(count / pageSize);
+
+        this.setData({
+            totalFilterPage,
         })
-        let con1
-        if (this.data.beanArray.length > 0) {
-            con1 = {
-                rowF: _.in(this.data.beanArray)
-            }
-        } else {
-            con1 = null
-        }
-        db.collection(this.data.filterData[filterPosition].table).limit(20).get({
-            success: res => {
-                wx.hideLoading()
-                console.error('length', res.data.length)
-                if (res.data.length > 0) {
-                    console.log("length", res.data.length)
-                    let checkData = res.data
-                    checkData.forEach(it => {
-                        it.checked = false
-                        it.display = it.name + "(" + it.total + ")"
-                    })
-                    checkData.splice(0, 0, {display: ALL, name: ALL})
-                    this.data.filterData[filterPosition].checkData = checkData
-                    this.setData({
-                        filterData: this.data.filterData,
-                        checkData: checkData,
-                        show: true,
-                        overlay: true,
-                    })
-                } else {
-                    this.data.filterData[filterPosition].checkData = []
-                    this.setData({
-                        filterData: this.data.filterData,
-                    })
+        this.setStoragePage()
+    },
+
+     getList(condition) {
+         db.collection(this.data.filterData[filterPosition].table)
+            .where(condition)
+            .skip((filterPage) * pageSize)
+            .limit(pageSize)
+            .get({
+                success: res => {
+                    if (res.data.length > 0) {
+                        let checkData = res.data
+                        checkData.forEach(it => {
+                            it.checked = false
+                            it.display = it.name + "(" + it.total + ")"
+                        })
+                        checkData.splice(0, 0, {display: ALL, name: ALL})
+                       let data= this.data.filterData[filterPosition].checkData
+                        this.data.filterData[filterPosition].checkData = data.concat(checkData)
+                        console.log("checkData",this.data.filterData)
+                        this.setData({
+                            filterData: this.data.filterData,
+                        })
+                        console.log("filterPage",filterPage)
+                        console.log("totalFilterPage",totalFilterPage)
+                        if (filterPage==totalFilterPage) {
+
+                            this.setData({
+                                show: true,
+                                overlay: true,
+                            })
+                        }
+                    } else {
+                        if (filterPage == 0) {
+                            console.log("empty-filter",0)
+                            this.data.filterData[filterPosition].checkData = []
+                            this.setData({
+                                filterData: this.data.filterData,
+                            })
+                            wx.showToast({
+                                icon: 'none',
+                                title: '没有相应筛选条件'
+                            })
+                        }
+                    }
+                    console.log('[数据库] [查询记录] 成功: ', res)
+                },
+                fail: err => {
+                    wx.hideLoading()
                     wx.showToast({
                         icon: 'none',
-                        title: '没有相应筛选条件'
+                        title: '查询记录失败'
                     })
+                    console.error('[数据库] [查询记录] 失败：', err)
                 }
-                console.log('[数据库] [查询记录] 成功: ', res)
-            },
-            fail: err => {
-                wx.hideLoading()
-                wx.showToast({
-                    icon: 'none',
-                    title: '查询记录失败'
-                })
-                console.error('[数据库] [查询记录] 失败：', err)
-            }
-        })
+            })
     },
 
 
     async filterList() {
-        const db = wx.cloud.database()
-        const _ = db.command
+
         // 查询当前用户所有的 counters
 
         wx.showLoading({
@@ -329,45 +395,9 @@ Page({
             }
         })
         if (n == 0) {
-            con1 = null
         }
-        console.log("con1", con1)
 
-        const $ = db.command.aggregate
-        let dataTotal = await db.collection(collectionName)
-            .aggregate()
-            .match(con1)
-            .group({
-                _id: null,
-                value_0: $.sum(1),
-                value_1: $.sum('$rowK'),
-                value_2: $.sum('$rowS'),
-                value_3: $.sum('$rowT'),
-                value_4: $.sum('$rowV'),
-                value_5: $.sum('$rowX'),
-                value_6: $.sum('$rowW'),
-                value_7: $.sum('$rowAM'),
-            })
-            .end()
-        console.log("dataTotal", dataTotal)
-        let totalPage = Math.ceil(dataTotal.list[0].value_0/pageSize);
-        let pageData = []
-        if(totalPage>1){
-            for (let i = 0; i < totalPage; i++) {
-                if (i==0){
-                    pageData.push({name:i+1,checked:true})
-                }else {
-                    pageData.push({name:i+1,checked:false})
-                }
-            }
-        }
-        this.setData({
-            dataTotal,
-            pageData,
-        })
-        console.log("totalPage", totalPage)
-        console.log("pageData", pageData)
-        this.setStoragePage()
+
         db.collection(collectionName).where(con1)
             .skip((page) * pageSize)
             .limit(pageSize)
@@ -375,11 +405,7 @@ Page({
             .get({
                 success: res => {
                     wx.hideLoading()
-                    console.error('length', res.data.length)
                     if (res.data.length > 0) {
-
-                        console.log("length", res.data.length)
-
                         let listData = res.data
                         // {name: "电站个数", val: ""},
                         // {name: "电站容量", val: ""},
@@ -412,7 +438,7 @@ Page({
                         })
                         this.setData({
                             isEmpty: true,
-                            listData:[]
+                            listData: []
                         })
                     }
                     this.setStorageResult()
@@ -427,6 +453,71 @@ Page({
                     console.error('[数据库] [查询记录] 失败：', err)
                 }
             })
+    },
+
+    async filterSum() {
+        let con1 = {}
+        let n = 0
+        this.data.filterData.forEach(it => {
+            if (!isEmpty(it.val)) {
+                if (it.checkData != null) {
+                    n++
+                    let array = []
+                    it.checkData.forEach(it => {
+                        if (it.name != ALL) {
+                            if (it.checked) {
+                                array.push(it.name)
+                            }
+                        }
+                    })
+                    con1[it.row] = _.or(array)
+                }
+            }
+        })
+        if (n == 0) {
+        }
+        const $ = db.command.aggregate
+        let dd = Math.pow(10, 10)
+        let dataTotal = await db.collection(collectionName)
+            .aggregate()
+            .match(con1)
+            .group({
+                _id: null,
+                value_0: $.sum(1),
+                value_1: $.sum('$rowK'),
+                value_2: $.sum('$rowS'),
+                value_3: $.sum('$rowT'),
+                value_4: $.sum('$rowV'),
+                value_5: $.sum('$rowX'),
+                value_6: $.sum('$rowW'),
+                value_7: $.sum('$rowAM'),
+            })
+            .end()
+        let totalPage = Math.ceil(dataTotal.list[0].value_0 / pageSize);
+        console.log("value_1",dataTotal.list[0].value_1)
+        dataTotal.list[0].value_1 = dataTotal.list[0].value_1.toFixed(6)
+        dataTotal.list[0].value_2 = dataTotal.list[0].value_2.toFixed(6)
+        dataTotal.list[0].value_3 = dataTotal.list[0].value_3.toFixed(6)
+        dataTotal.list[0].value_4 = dataTotal.list[0].value_4.toFixed(6)
+        dataTotal.list[0].value_5 = dataTotal.list[0].value_5.toFixed(6)
+        dataTotal.list[0].value_6 = dataTotal.list[0].value_6.toFixed(6)
+        dataTotal.list[0].value_7 = dataTotal.list[0].value_7.toFixed(6)
+        let pageData = []
+        if (totalPage > 1) {
+            for (let i = 0; i < totalPage; i++) {
+                if (i == 0) {
+                    pageData.push({name: i + 1, checked: true})
+                } else {
+                    pageData.push({name: i + 1, checked: false})
+                }
+            }
+        }
+        this.setData({
+            dataTotal,
+            pageData,
+        })
+        this.setStoragePage()
+
     },
 
 

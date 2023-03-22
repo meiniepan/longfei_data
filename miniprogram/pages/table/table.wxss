@@ -16,7 +16,7 @@
 .cell-filter {
     display: flex;
     flex-direction: column;
-    padding:5rpx 30rpx;
+    padding:20rpx 30rpx;
     margin-bottom: 0rpx;
 
 
@@ -72,7 +72,6 @@
     margin-bottom: 20rpx;
 }
 .cells-list {
-    padding-top: 20rpx;
     margin-bottom: 50rpx;
 }
 .cell-all {
@@ -104,7 +103,7 @@
 .title-all{
     color: var(--grayF6);
     margin-left: 50rpx;
-    word-break:break-all;
+
 }
 .title-sum{
     width: 100%;
@@ -116,6 +115,7 @@
     font-weight: bold;
     margin-top: 20rpx;
 }
+
 .cells-page {
     display: flex;
     width: 100%;
@@ -127,22 +127,31 @@
 .cell-page {
     display: flex;
     flex-direction: column;
+    margin-right: 30rpx;
+}
+.title-page {
+    display: flex;
+    color: var(--commonHint);
+    background: var(--white);
     width: 50rpx;
     height: 50rpx;
-    margin-right: 30rpx;
     align-items: center;
     justify-content: center;
     border-radius: 50rpx;
     box-sizing: border-box;
-    background: var(--white);
-}
-.title-page {
-    color: var(--commonHint);
 }
 .title-page-checked {
+    display: flex;
     color: var(--tiffany);
     font-weight: bold;
     font-size: 32rpx;
+    background: var(--themeBac);
+    width: 50rpx;
+    height: 50rpx;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50rpx;
+    box-sizing: border-box;
 }
 .titles {
     display: flex;
@@ -160,7 +169,7 @@
 .title {
     color: var(--commonHint);
     margin-left: 50rpx;
-    word-break:break-all;
+
 }
 .action{
     display: flex;

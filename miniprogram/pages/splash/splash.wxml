@@ -1,0 +1,5 @@
+<!--pages/splash/splash.wxml-->
+<image class="bac" src="../../images/rain2.svg" mode="aspectFill"/>
+<view class="out">
+    <view class="title">龙飞数据</view>
+</view>

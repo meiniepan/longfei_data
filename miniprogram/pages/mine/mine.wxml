@@ -1,0 +1,5 @@
+<!--pages/mine/mine.wxml-->
+<view class="out">
+    <image class="bac" src="../../images/rain.svg" mode="aspectFill"/>
+</view>
+

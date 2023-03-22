@@ -102,9 +102,9 @@ exports.main = async (event, context) => {
                 let row_county = row[5]
                 if (!isEmpty(row_county)) {
                     if (data_county.has(row_county)) {
-                        data_county.set(row_county, data_county.get(row_county) + 1)
+                        data_county.set(row_county, {parent:row_city,total:data_county.get(row_county).total + 1})
                     } else {
-                        data_county.set(row_county, 1)
+                        data_county.set(row_county, {parent:row_city,total:1})
                     }
                 }
                 //7
@@ -120,9 +120,9 @@ exports.main = async (event, context) => {
                 let row_little = row[3]
                 if (!isEmpty(row_little)) {
                     if (data_little.has(row_little)) {
-                        data_little.set(row_little, data_little.get(row_little) + 1)
+                        data_little.set(row_little, {parent:row_big,total:data_little.get(row_little).total + 1})
                     } else {
-                        data_little.set(row_little, 1)
+                        data_little.set(row_little, {parent:row_big,total:1})
                     }
                 }
                 //9
@@ -286,7 +286,7 @@ exports.main = async (event, context) => {
 
     let array_6 = []
     data_county.forEach((val, key) => {
-        array_6.push({name: key, total: val})
+        array_6.push({name: key,parent:val.parent, total: val.total})
     })
     var result_6 = await db.collection(table_6).add({data: array_6}).then(res => {
         return res
@@ -306,7 +306,7 @@ exports.main = async (event, context) => {
 
     let array_8 = []
     data_little.forEach((val, key) => {
-        array_8.push({name: key, total: val})
+        array_8.push({name: key,parent:val.parent, total: val.total})
     })
     var result_8 = await db.collection(table_8).add({data: array_8}).then(res => {
         return res

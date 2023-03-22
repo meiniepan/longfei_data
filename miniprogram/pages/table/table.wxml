@@ -1,8 +1,8 @@
 <!--pages/table/table.wxml-->
 <view class="out">
 
-    <view class="title-0" bindtap="clearAll">
-        <view class="filter" bindtap="">筛选</view>
+    <view class="title-0"  catchtap="clearAll">
+        <view class="filter"  catchtap="">筛选</view>
         <image class="brush" src="../../images/ic_brush.png" mode="aspectFill"/>
     </view>
     <view class="cells-filter">
@@ -18,7 +18,7 @@
 
         </view>
     </view>
-    <view class="result" bindtap="">结果</view>
+    <view class="result"  catchtap="">结果</view>
     <view class="cell-all" wx:if="{{!isEmpty}}">
         <view class="titles">
             <view class="title-sum">合计</view>
@@ -64,7 +64,7 @@
         </view>
     </scroll-view>
     <view class="cells-list">
-        <view class="cell-list" wx:for="{{listData}}" wx:key="index" data-num="{{item.value_8}}" bindtap="queryDetail">
+        <view class="cell-list" wx:for="{{listData}}" wx:key="index" data-num="{{item.value_8}}"  catchtap="queryDetail">
             <view class="titles-list">
                 <view class="title-name">{{mData[8].name}}</view>
                 <view class="title">{{item.value_8}}</view>
@@ -103,8 +103,15 @@
                 <view class="title">{{item.value_7}}</view>
             </view>
         </view>
+        <scroll-view class="cells-page" wx:if="{{pageData.length>1}}" enable-flex scroll-x>
+            <view class="cell-page" wx:for="{{pageData}}" wx:key="index" data-index="{{index}}" catchtap="queryPage">
+                <view class="{{item.checked?'title-page-checked':'title-page'}}">{{item.name}}</view>
+            </view>
+        </scroll-view>
     </view>
     <view class="b" >Powered By Solang</view>
+
+
 </view>
 <page-container
         show="{{show}}"
@@ -121,7 +128,7 @@
     <view wx:if="{{show}}" class="layout0">
             <scroll-view class="cells-bottom" enable-flex scroll-y>
             <view class="cell-bottom" wx:for="{{filterData[filterPosition].checkData}}" wx:key="index"
-                  data-index="{{index}}" bindtap="checkRule">
+                  data-index="{{index}}"  catchtap="checkRule">
                 <view>
                     {{item.display}}
                 </view>
@@ -130,8 +137,8 @@
             </view>
         </scroll-view>
         <view class="layout1">
-            <view class="btn1" bindtap="doBtn1">取消</view>
-            <view class="btn2" bindtap="doBtn2">确定</view>
+            <view class="btn1"  catchtap="doBtn1">取消</view>
+            <view class="btn2"  catchtap="doBtn2">确定</view>
         </view>
     </view>
 </page-container>

@@ -1,6 +1,5 @@
 <!--pages/home/home.wxml-->
 <view class="out">
-    <button type="primary" style="margin-top: 40rpx" bindtap="upload">上传数据</button>
-    <button type="primary" style="margin-top: 40rpx" bindtap="checkInfo">筛选数据</button>
-    <button type="primary" style="margin-top: 40rpx" bindtap="queryId">编码查询</button>
+    <button type="primary" style="margin-top: 80rpx" bindtap="upload">上传数据</button>
+    <button type="primary" style="margin-top: 60rpx" bindtap="checkInfo">筛选数据</button>
 </view>

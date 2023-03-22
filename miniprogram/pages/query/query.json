@@ -2,5 +2,5 @@
   "usingComponents": {
     "emptyView": "/components/emptyView/emptyView"
   },
-  "navigationBarTitleText": "数据详情"
+  "navigationBarTitleText": ""
 }

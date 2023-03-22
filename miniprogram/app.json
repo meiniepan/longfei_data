@@ -1,16 +1,46 @@
 {
   "pages": [
+    "pages/splash/splash",
     "pages/home/home",
     "pages/table/table",
+    "pages/mine/mine",
     "pages/query/query"
     
   ],
+  "tabBar": {
+    "color": "#dbdbdb",
+    "selectedColor": "#81D8D0",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "筛选",
+        "iconPath": "images/filter.png",
+        "selectedIconPath": "images/filter_c.png"
+      },
+      {
+        "pagePath": "pages/query/query",
+        "text": "搜索",
+        "iconPath": "images/sss.png",
+        "selectedIconPath": "images/sss_c.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "images/mine.png",
+        "selectedIconPath": "images/mine_c.png"
+      }
+    ]
+  },
   "window": {
-    "backgroundColor": "#F6F6F6",
+    "backgroundColor": "#81D8D0",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#81D8D0",
-    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarTitleText": "龙飞数据",
     "navigationBarTextStyle": "black"
+  },
+  "usingComponents": {
+    "emptyView": "../../components/emptyView/emptyView"
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"
