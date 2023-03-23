@@ -127,6 +127,7 @@ Page({
          this.setData({
              filterPosition,
          })
+
          if (isEmpty(this.data.filterData[filterPosition].val)) {
              this.data.filterData[filterPosition].checkData = []
              let condition = {}
@@ -238,6 +239,11 @@ Page({
 
 
         if (n > 0) {
+            if (filterPosition == 4 || filterPosition == 6) {  //县、小类
+                let it = this.data.filterData[filterPosition + 1]
+                it.val = ''
+                it.checkData = null
+            }
             this.setStorageFilter()
             this.setData({
                 show: false,

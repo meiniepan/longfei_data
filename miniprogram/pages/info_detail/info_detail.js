@@ -88,13 +88,13 @@ Page({
     }
   },
   setStorageNum() {
-    console.log("query_num", number)
-    wx.setStorageSync('query_num', number)
+    // console.log("query_num", number)
+    // wx.setStorageSync('query_num', number)
   },
 
   setStorageDetail() {
-    console.log("query_detail", this.data.mData)
-    wx.setStorageSync('query_detail', JSON.stringify(this.data.mData))
+    // console.log("query_detail", this.data.mData)
+    // wx.setStorageSync('query_detail', JSON.stringify(this.data.mData))
   },
 
   getInfo() {

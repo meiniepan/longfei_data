@@ -115,17 +115,18 @@
     width: 100%;
     display: flex;
     align-items: center;
+    color: var(--tiffany);
     justify-content: center;
     font-size: 48rpx;
-    font-weight: bold;
 }
 
 .cells-page {
     display: flex;
     width: 100vw;
-    height: 50rpx;
+    height: 110rpx;
     flex-direction: row;
-   margin: 30rpx;
+    box-sizing: border-box;
+   padding:30rpx;
 }
 
 .cell-page {
