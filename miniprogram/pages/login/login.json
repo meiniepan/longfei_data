@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "commonButton": "/components/commonButton/commonButton",
+    "modal": "/components/modal/modal"
+  },
+  "navigationBarTitleText": "登录",
+  "navigationStyle":"custom"
+}

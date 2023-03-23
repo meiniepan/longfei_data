@@ -1,10 +1,5 @@
 <!--pages/query/query.wxml-->
 <view class="out">
-    <view class="search-area">
-        <image style="width: 28rpx;height: 28rpx" mode="heightFix" src="../../images/ic_search.png"></image>
-        <input class="search hint singleLine" type="text" value="{{number}}" maxlength="20" placeholder="搜索调度表编号" bindinput="doInput"
-               bindconfirm="doSearch" confirm-type="search" data-type="realname"/>
-    </view>
     <emptyView wx:if="{{isEmpty}}"/>
     <view class="cell-list" wx:if="{{!isEmpty}}" bindtap="">
         <view class="titles-list">

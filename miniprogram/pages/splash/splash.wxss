@@ -10,9 +10,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 60rpx;
+    font-size: 50rpx;
     font-weight: bold;
-    color: var(--tiffany);
+    color: cadetblue;
     position: fixed;
     top: 300rpx;
 }

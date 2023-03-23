@@ -1,6 +1,6 @@
 const cloud = require('wx-server-sdk')
 cloud.init({
-    env: "env-0glfk94n26eebb18"
+    env: "env-0gapm84612a60b96"
 })
 var xlsx = require('node-xlsx');
 const db = cloud.database()

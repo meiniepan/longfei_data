@@ -1,4 +1,5 @@
 // pages/home/home.js
+let app = getApp();
 Page({
 
     /**
@@ -10,7 +11,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        app.checkUpdate()
     },
 
     /**
@@ -65,6 +66,9 @@ Page({
                 wx.showToast({
                     icon: 'success',
                     title: '解析并上传成功'
+                })
+                wx.cloud.deleteFile({
+                    fileList:[fileId]
                 })
                 console.log("解析并上传成功",res)
             },
@@ -122,6 +126,9 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage: function () {
-
+        return {
+            title: '龙飞数据',
+            path: 'pages/splash/splash',
+        }
     }
 })

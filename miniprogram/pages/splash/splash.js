@@ -1,4 +1,6 @@
 // pages/splash/splash.js
+import {isEmpty} from "../../utils/util";
+
 Page({
 
   /**
@@ -14,9 +16,18 @@ Page({
   onLoad(options) {
 
     setTimeout(() => {
-          wx.switchTab({
-            url: '/pages/home/home',
-          })
+      let token = wx.getStorageSync("token")
+          if (!isEmpty(token)) {
+            wx.switchTab({
+                  url: '/pages/home/home',
+                }
+            )
+          } else {
+            wx.redirectTo({
+                  url: '/pages/login/login',
+                }
+            )
+          }
         }
         , 2000)
   },

@@ -24,36 +24,36 @@
             <view class="title-sum">合计</view>
         </view>
         <view class="titles-all">
-            <view class="title-name">{{mData[0].name}}</view>
+            <view class="title-name-all">{{mData[0].name}}</view>
             <view class="title-all">{{dataTotal.list[0].value_0}}</view>
         </view>
         <view class="titles-all">
-            <view class="title-name">{{mData[1].name}}</view>
+            <view class="title-name-all">{{mData[1].name}}</view>
             <view class="title-all">{{dataTotal.list[0].value_1}}</view>
         </view>
 
         <view class="titles-all">
-            <view class="title-name">{{mData[2].name}}</view>
+            <view class="title-name-all">{{mData[2].name}}</view>
             <view class="title-all">{{dataTotal.list[0].value_2}}</view>
         </view>
         <view class="titles-all">
-            <view class="title-name">{{mData[3].name}}</view>
+            <view class="title-name-all">{{mData[3].name}}</view>
             <view class="title-all">{{dataTotal.list[0].value_3}}</view>
         </view>
         <view class="titles-all">
-            <view class="title-name">{{mData[4].name}}</view>
+            <view class="title-name-all">{{mData[4].name}}</view>
             <view class="title-all">{{dataTotal.list[0].value_4}}</view>
         </view>
         <view class="titles-all">
-            <view class="title-name">{{mData[5].name}}</view>
+            <view class="title-name-all">{{mData[5].name}}</view>
             <view class="title-all">{{dataTotal.list[0].value_5}}</view>
         </view>
         <view class="titles-all">
-            <view class="title-name">{{mData[6].name}}</view>
+            <view class="title-name-all">{{mData[6].name}}</view>
             <view class="title-all">{{dataTotal.list[0].value_6}}</view>
         </view>
         <view class="titles-all">
-            <view class="title-name">{{mData[7].name}}</view>
+            <view class="title-name-all">{{mData[7].name}}</view>
             <view class="title-all">{{dataTotal.list[0].value_7}}</view>
         </view>
     </view>

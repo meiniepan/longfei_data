@@ -160,20 +160,14 @@ Page({
              })
              await this.listSum(condition)
              filterPage = 0
-             console.log("totalFilterPage", totalFilterPage)
              if (totalFilterPage>0) {
-                 for (let i = 0; i < totalFilterPage; i++) {
-                     console.log("for", i)
-                     this.getList(condition)
-                     filterPage++
-                 }
+                 this.getList(condition)
              } else {
                  wx.showToast({
                      icon: 'none',
                      title: '没有相应筛选条件'
                  })
              }
-             wx.hideLoading()
 
          } else {
              if (this.data.filterData[filterPosition].checkData.length > 0) {
@@ -209,7 +203,7 @@ Page({
     queryDetail(e) {
         let num = e.currentTarget.dataset.num
         wx.navigateTo({
-            url: '/pages/query/query?num=' + num,
+            url: '/pages/info_detail/info_detail?num=' + num,
         })
     },
     doBtn1() {
@@ -312,60 +306,70 @@ Page({
         this.setStoragePage()
     },
 
-     getList(condition) {
-         db.collection(this.data.filterData[filterPosition].table)
-            .where(condition)
-            .skip((filterPage) * pageSize)
-            .limit(pageSize)
-            .get({
-                success: res => {
-                    if (res.data.length > 0) {
-                        let checkData = res.data
-                        checkData.forEach(it => {
-                            it.checked = false
-                            it.display = it.name + "(" + it.total + ")"
-                        })
-                        checkData.splice(0, 0, {display: ALL, name: ALL})
-                       let data= this.data.filterData[filterPosition].checkData
-                        this.data.filterData[filterPosition].checkData = data.concat(checkData)
-                        console.log("checkData",this.data.filterData)
-                        this.setData({
-                            filterData: this.data.filterData,
-                        })
-                        console.log("filterPage",filterPage)
-                        console.log("totalFilterPage",totalFilterPage)
-                        if (filterPage==totalFilterPage) {
+      getList(condition) {
+          db.collection(this.data.filterData[filterPosition].table)
+             .where(condition)
+             .skip((filterPage) * pageSize)
+             .limit(pageSize)
+             .get({
+                 success: res => {
 
-                            this.setData({
-                                show: true,
-                                overlay: true,
-                            })
-                        }
-                    } else {
-                        if (filterPage == 0) {
-                            console.log("empty-filter",0)
-                            this.data.filterData[filterPosition].checkData = []
-                            this.setData({
-                                filterData: this.data.filterData,
-                            })
-                            wx.showToast({
-                                icon: 'none',
-                                title: '没有相应筛选条件'
-                            })
-                        }
-                    }
-                    console.log('[数据库] [查询记录] 成功: ', res)
-                },
-                fail: err => {
-                    wx.hideLoading()
-                    wx.showToast({
-                        icon: 'none',
-                        title: '查询记录失败'
-                    })
-                    console.error('[数据库] [查询记录] 失败：', err)
-                }
-            })
-    },
+                     if (res.data.length > 0) {
+                         let checkData = res.data
+                         checkData.forEach(it => {
+                             it.checked = false
+                             it.display = it.name + "(" + it.total + ")"
+                         })
+                         if (filterPage == 0) {
+                             checkData.splice(0, 0, {display: ALL, name: ALL})
+                         }
+                         let data = this.data.filterData[filterPosition].checkData
+                         this.data.filterData[filterPosition].checkData = data.concat(checkData)
+
+                         this.setData({
+                             filterData: this.data.filterData,
+                         })
+                         if (filterPage == (totalFilterPage - 1)) {
+                             wx.hideLoading()
+                             let data = this.data.filterData[filterPosition].checkData
+                             data[0].display = data[0].name + "(" + (data.length-1) + ")"
+                             console.log("display",data)
+                             this.setData({
+                                 filterData: this.data.filterData,
+                                 show: true,
+                                 overlay: true,
+                             })
+                         }
+                     } else {
+                         if (filterPage == 0) {
+
+                             this.data.filterData[filterPosition].checkData = []
+                             this.setData({
+                                 filterData: this.data.filterData,
+                             })
+                             wx.showToast({
+                                 icon: 'none',
+                                 title: '没有相应筛选条件'
+                             })
+                         }
+                     }
+                     filterPage++
+                     if (filterPage < totalFilterPage) {
+                        this.getList(condition)
+                     }
+                     console.log('[数据库] [查询记录] 成功: ', res)
+                 },
+                 fail: err => {
+
+                     wx.hideLoading()
+                     wx.showToast({
+                         icon: 'none',
+                         title: '查询记录失败'
+                     })
+                     console.error('[数据库] [查询记录] 失败：', err)
+                 }
+             })
+     },
 
 
     async filterList() {
@@ -494,7 +498,6 @@ Page({
             })
             .end()
         let totalPage = Math.ceil(dataTotal.list[0].value_0 / pageSize);
-        console.log("value_1",dataTotal.list[0].value_1)
         dataTotal.list[0].value_1 = dataTotal.list[0].value_1.toFixed(6)
         dataTotal.list[0].value_2 = dataTotal.list[0].value_2.toFixed(6)
         dataTotal.list[0].value_3 = dataTotal.list[0].value_3.toFixed(6)
@@ -558,8 +561,8 @@ Page({
      */
     onShareAppMessage: function () {
         return {
-            title: 'nice',
-            path: 'pages/home/home',
+            title: '龙飞数据',
+            path: 'pages/splash/splash',
         }
     }
 })

@@ -42,14 +42,14 @@
     width: fit-content;
     align-items: center;
     color: var(--commonBlack);
-    font-size: 36rpx;
+    font-size: 48rpx;
     font-weight: bold;
     padding: 20rpx 30rpx;
 }
 .filter {
     display: flex;
     color: var(--commonBlack);
-    font-size: 36rpx;
+    font-size: 48rpx;
     font-weight: bold;
 }
 .brush{
@@ -79,7 +79,7 @@
     flex-direction: column;
     margin: 5rpx 20rpx;
     border-radius: 20rpx;
-    padding:5rpx 30rpx;
+    padding:30rpx 30rpx;
     background: var(--themeBac);
 }
 .cell-list {
@@ -100,8 +100,14 @@
     justify-content: space-between;
     padding:10rpx 0rpx;
 }
+.title-name-all {
+    display: flex;
+    font-size: 36rpx;
+    flex-shrink: 0;
+}
+
 .title-all{
-    color: var(--grayF6);
+    color: var(--commonHint);
     margin-left: 50rpx;
 
 }
@@ -110,18 +116,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--tiffany);
-    font-size: 36rpx;
+    font-size: 48rpx;
     font-weight: bold;
-    margin-top: 20rpx;
 }
 
 .cells-page {
     display: flex;
-    width: 100%;
+    width: 100vw;
     height: 50rpx;
     flex-direction: row;
-   padding: 30rpx;
+   margin: 30rpx;
 }
 
 .cell-page {
@@ -161,7 +165,7 @@
 .title-name {
     display: flex;
     color: var(--tiffany);
-    font-size: 30rpx;
+    font-size: 36rpx;
     flex-shrink: 0;
 }
 

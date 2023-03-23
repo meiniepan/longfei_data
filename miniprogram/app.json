@@ -3,6 +3,8 @@
     "pages/splash/splash",
     "pages/home/home",
     "pages/table/table",
+    "pages/login/login",
+    "pages/info_detail/info_detail",
     "pages/mine/mine",
     "pages/query/query"
     

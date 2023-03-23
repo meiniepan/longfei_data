@@ -5,7 +5,7 @@ page {
   --userToken: 'userToken';
 
 
-  --themeColor: #F95B49;
+  --themeColor: #1677FF;
   --tintBac: #F5F7FD;
   --tint0: #97A0C3;
   --commonBac: #ffffff;
@@ -18,7 +18,7 @@ page {
   --grayEE: #EEEEEE;
   --orange: #FF9040;
   --tiffany: #81D8D0;
-  --themeBac: linear-gradient(to right,#EF8D82,#F95B49);
+  --themeBac: linear-gradient(to right,#445FF5,#6D0BBD);
   --titlePadding: 46rpx;
   --textHeight: 88rpx;
   --maxWidth: 500rpx;
@@ -38,7 +38,7 @@ page {
   width: 100vw;
   height: 100vh;
   background: var(--tiffany);
-  font-size: 28rpx;
+  font-size: 32rpx;
   box-sizing: border-box;
 }
 .singleLine{

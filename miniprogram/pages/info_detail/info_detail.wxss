@@ -1,0 +1,47 @@
+/* pages/query/query.wxss */
+.search-area {
+    display: flex;
+    height: 80rpx;
+    margin: 20rpx var(--titlePadding);
+    padding-left: 34rpx;
+    padding-right: 34rpx;
+    background: var(--tintBac);
+    align-items: center;
+    box-sizing: border-box;
+    border-radius: 40rpx;
+    flex-shrink: 0;
+}
+
+.search {
+    display: flex;
+    flex-grow: 1;
+    margin-left: 10rpx;
+}
+.cell-list {
+    display: flex;
+    flex-direction: column;
+    margin: 10rpx 20rpx;
+    border-radius: 20rpx;
+    padding:5rpx 30rpx;
+    margin-bottom: 50rpx;
+    background: var(--white);
+}
+.titles-list {
+    display: flex;
+    justify-content: space-between;
+    padding:10rpx 0rpx;
+}
+.title-name {
+    display: flex;
+    color: var(--tiffany);
+    font-size: 30rpx;
+    max-width: 50%;
+    flex-shrink: 0;
+}
+
+
+.title {
+    color: var(--commonHint);
+    margin-left: 50rpx;
+
+}

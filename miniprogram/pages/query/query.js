@@ -226,7 +226,10 @@ Page({
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage() {
-
+    onShareAppMessage: function () {
+        return {
+            title: '龙飞数据',
+            path: 'pages/splash/splash',
+        }
     }
 })

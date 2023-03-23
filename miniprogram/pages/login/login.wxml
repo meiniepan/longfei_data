@@ -1,0 +1,9 @@
+<!--pages/login/login.wxml-->
+<view class="out">
+    <view class="mark-out">
+        <input data-type="phone" type="number" style="margin-top: 20rpx" class="input" placeholder="请输入登录号" bindinput="doInput" maxlength="11"/>
+        <input data-type="pwd"  class="input" placeholder="请输入登录密码" password bindinput="doInput" maxlength="8"/>
+        <commonButton mType="0" bindtap="doLogin" class="btn2" text="登录" style="margin-top: 50rpx"/>
+    </view>
+
+</view>

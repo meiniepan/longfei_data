@@ -1,11 +1,13 @@
 // app.js
+import {showModal} from "./utils/util";
+
 App({
   onLaunch: function () {
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力');
     } else {
       wx.cloud.init({
-        env:"env-0glfk94n26eebb18",
+        env:"env-0gapm84612a60b96",
         traceUser: true,
       });
     }
@@ -25,6 +27,33 @@ App({
       });
 
   },
+
+  checkUpdate() {
+    const updateManager = wx.getUpdateManager()
+
+    updateManager.onCheckForUpdate(res => {
+      // 请求完新版本信息的回调
+      console.log("hasUpdate", res.hasUpdate)
+    })
+
+    updateManager.onUpdateReady(function () {
+      showModal(
+          '新版本已经准备好，是否重启应用？',
+          '更新提示',
+          (res) => {
+            if (res.confirm) {
+              // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
+              updateManager.applyUpdate()
+            }
+          }
+      )
+    })
+
+    updateManager.onUpdateFailed(function () {
+      // 新版本下载失败
+    })
+  },
+
   globalData : {
     systemInfo: null,
     statusBarHeight: 0,
