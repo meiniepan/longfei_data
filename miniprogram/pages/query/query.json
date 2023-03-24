@@ -2,5 +2,5 @@
   "usingComponents": {
     "emptyView": "/components/emptyView/emptyView"
   },
-  "navigationBarTitleText": ""
+  "navigationStyle":"custom"
 }

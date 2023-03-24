@@ -122,68 +122,68 @@ Page({
             })
         }
     },
-     async queryFilter(e) {
-         filterPosition = e.currentTarget.dataset.index
-         this.setData({
-             filterPosition,
-         })
+    async queryFilter(e) {
+        filterPosition = e.currentTarget.dataset.index
+        this.setData({
+            filterPosition,
+        })
 
-         if (isEmpty(this.data.filterData[filterPosition].val)) {
-             this.data.filterData[filterPosition].checkData = []
-             let condition = {}
-             let n = 0
-             if (filterPosition == 5 || filterPosition == 7) {  //县、小类
-                 let it = this.data.filterData[filterPosition - 1].checkData
-                 if (it != null) {
-                     let array = []
-                     it.forEach(it2 => {
-                         if (it2.name != ALL) {
-                             if (it2.checked) {
-                                 n++
-                                 array.push(it2.name)
-                             }
-                         }
-                     })
-                     if (n > 0) {
-                         condition.parent = _.or(array)
-                     } else {
-                         // condition = null
-                     }
+        if (isEmpty(this.data.filterData[filterPosition].val)) {
+            this.data.filterData[filterPosition].checkData = []
+            let condition = {}
+            let n = 0
+            if (filterPosition == 5 || filterPosition == 7) {  //县、小类
+                let it = this.data.filterData[filterPosition - 1].checkData
+                if (it != null) {
+                    let array = []
+                    it.forEach(it2 => {
+                        if (it2.name != ALL) {
+                            if (it2.checked) {
+                                n++
+                                array.push(it2.name)
+                            }
+                        }
+                    })
+                    if (n > 0) {
+                        condition.parent = _.or(array)
+                    } else {
+                        // condition = null
+                    }
 
-                 } else {
-                     // condition = null
-                 }
-             } else {
-                 // condition = null
-             }
-             wx.showLoading({
-                 title: '加载中',
-             })
-             await this.listSum(condition)
-             filterPage = 0
-             if (totalFilterPage>0) {
-                 this.getList(condition)
-             } else {
-                 wx.showToast({
-                     icon: 'none',
-                     title: '没有相应筛选条件'
-                 })
-             }
+                } else {
+                    // condition = null
+                }
+            } else {
+                // condition = null
+            }
+            wx.showLoading({
+                title: '加载中',
+            })
+            await this.listSum(condition)
+            filterPage = 0
+            if (totalFilterPage > 0) {
+                this.getList(condition)
+            } else {
+                wx.showToast({
+                    icon: 'none',
+                    title: '没有相应筛选条件'
+                })
+            }
 
-         } else {
-             if (this.data.filterData[filterPosition].checkData.length > 0) {
-                 this.setData({
-                     show: true,
-                     overlay: true,
-                 })
-             } else {
-                 wx.showToast({
-                     icon: 'none',
-                     title: '没有相应筛选条件'
-                 })
-             }
-         }
-     },
+        } else {
+            if (this.data.filterData[filterPosition].checkData.length > 0) {
+                this.setData({
+                    show: true,
+                    overlay: true,
+                })
+            } else {
+                wx.showToast({
+                    icon: 'none',
+                    title: '没有相应筛选条件'
+                })
+            }
+        }
+    },
     checkRule(e) {
         let v = this.data.filterData[filterPosition].checkData
         let index = e.currentTarget.dataset.index
@@ -304,7 +304,7 @@ Page({
             .where(condition)
             .count()
         count = count.total
-         totalFilterPage = Math.ceil(count / pageSize);
+        totalFilterPage = Math.ceil(count / pageSize);
 
         this.setData({
             totalFilterPage,
@@ -312,70 +312,70 @@ Page({
         this.setStoragePage()
     },
 
-      getList(condition) {
-          db.collection(this.data.filterData[filterPosition].table)
-             .where(condition)
-             .skip((filterPage) * pageSize)
-             .limit(pageSize)
-             .get({
-                 success: res => {
+    getList(condition) {
+        db.collection(this.data.filterData[filterPosition].table)
+            .where(condition)
+            .skip((filterPage) * pageSize)
+            .limit(pageSize)
+            .get({
+                success: res => {
 
-                     if (res.data.length > 0) {
-                         let checkData = res.data
-                         checkData.forEach(it => {
-                             it.checked = false
-                             it.display = it.name + "(" + it.total + ")"
-                         })
-                         if (filterPage == 0) {
-                             checkData.splice(0, 0, {display: ALL, name: ALL})
-                         }
-                         let data = this.data.filterData[filterPosition].checkData
-                         this.data.filterData[filterPosition].checkData = data.concat(checkData)
+                    if (res.data.length > 0) {
+                        let checkData = res.data
+                        checkData.forEach(it => {
+                            it.checked = false
+                            it.display = it.name + "(" + it.total + ")"
+                        })
+                        if (filterPage == 0) {
+                            checkData.splice(0, 0, {display: ALL, name: ALL})
+                        }
+                        let data = this.data.filterData[filterPosition].checkData
+                        this.data.filterData[filterPosition].checkData = data.concat(checkData)
 
-                         this.setData({
-                             filterData: this.data.filterData,
-                         })
-                         if (filterPage == (totalFilterPage - 1)) {
-                             wx.hideLoading()
-                             let data = this.data.filterData[filterPosition].checkData
-                             data[0].display = data[0].name + "(" + (data.length-1) + ")"
-                             console.log("display",data)
-                             this.setData({
-                                 filterData: this.data.filterData,
-                                 show: true,
-                                 overlay: true,
-                             })
-                         }
-                     } else {
-                         if (filterPage == 0) {
+                        this.setData({
+                            filterData: this.data.filterData,
+                        })
+                        if (filterPage == (totalFilterPage - 1)) {
+                            wx.hideLoading()
+                            let data = this.data.filterData[filterPosition].checkData
+                            data[0].display = data[0].name + "(" + (data.length - 1) + ")"
+                            console.log("display", data)
+                            this.setData({
+                                filterData: this.data.filterData,
+                                show: true,
+                                overlay: true,
+                            })
+                        }
+                    } else {
+                        if (filterPage == 0) {
 
-                             this.data.filterData[filterPosition].checkData = []
-                             this.setData({
-                                 filterData: this.data.filterData,
-                             })
-                             wx.showToast({
-                                 icon: 'none',
-                                 title: '没有相应筛选条件'
-                             })
-                         }
-                     }
-                     filterPage++
-                     if (filterPage < totalFilterPage) {
+                            this.data.filterData[filterPosition].checkData = []
+                            this.setData({
+                                filterData: this.data.filterData,
+                            })
+                            wx.showToast({
+                                icon: 'none',
+                                title: '没有相应筛选条件'
+                            })
+                        }
+                    }
+                    filterPage++
+                    if (filterPage < totalFilterPage) {
                         this.getList(condition)
-                     }
-                     console.log('[数据库] [查询记录] 成功: ', res)
-                 },
-                 fail: err => {
+                    }
+                    console.log('[数据库] [查询记录] 成功: ', res)
+                },
+                fail: err => {
 
-                     wx.hideLoading()
-                     wx.showToast({
-                         icon: 'none',
-                         title: '查询记录失败'
-                     })
-                     console.error('[数据库] [查询记录] 失败：', err)
-                 }
-             })
-     },
+                    wx.hideLoading()
+                    wx.showToast({
+                        icon: 'none',
+                        title: '查询记录失败'
+                    })
+                    console.error('[数据库] [查询记录] 失败：', err)
+                }
+            })
+    },
 
 
     async filterList() {
@@ -513,6 +513,7 @@ Page({
         dataTotal.list[0].value_7 = dataTotal.list[0].value_7.toFixed(6)
         let pageData = []
         if (totalPage > 1) {
+            page_last = 0
             for (let i = 0; i < totalPage; i++) {
                 if (i == 0) {
                     pageData.push({name: i + 1, checked: true})

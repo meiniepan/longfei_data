@@ -66,7 +66,7 @@ exports.main = async (event, context) => {
                 let row_ssjt = row[33]
                 if (!isEmpty(row_ssjt)) {
                     if (data_ssjt.has(row_ssjt)) {
-                        data_ssjt.set(row_ssjt, data_qylx.get(row_ssjt) + 1)
+                        data_ssjt.set(row_ssjt, data_ssjt.get(row_ssjt) + 1)
                     } else {
                         data_ssjt.set(row_ssjt, 1)
                     }

@@ -1,6 +1,7 @@
 <!--pages/query/query.wxml-->
 <view class="out">
-    <view class="search-area">
+    <image class="bac" style="top:{{iHeight}}px" src="../../images/{{icon=='1'?'icon_lu':icon=='2'?'icon_haitun':icon=='3'?'icon_nn':icon=='4'?'icon_dx':'icon_haima'}}.svg" mode=""/>
+    <view class="search-area" style="margin-top: {{nHeight}}px">
         <image style="width: 28rpx;height: 28rpx" mode="heightFix" src="../../images/ic_search.png"></image>
         <input class="search hint singleLine" type="text" value="{{number}}" maxlength="20" placeholder="搜索调度表编号" bindinput="doInput"
                bindconfirm="doSearch" confirm-type="search" data-type="realname"/>
@@ -8,163 +9,163 @@
     <emptyView wx:if="{{isEmpty}}"/>
     <view class="cell-list" wx:if="{{!isEmpty}}" bindtap="">
         <view class="titles-list">
-            <view class="title-name">{{mData.titleA}}</view>
+            <text  class="title-name" user-select>{{mData.titleA}}</text>
             <text user-select class="title">{{mData.rowA}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleB}}</view>
+            <text  class="title-name" user-select>{{mData.titleB}}</text>
             <text user-select class="title">{{mData.rowB}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleC}}</view>
+            <text  class="title-name" user-select>{{mData.titleC}}</text>
             <text user-select class="title">{{mData.rowC}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleD}}</view>
+            <text  class="title-name" user-select>{{mData.titleD}}</text>
             <text user-select class="title">{{mData.rowD}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleE}}</view>
+            <text  class="title-name" user-select>{{mData.titleE}}</text>
             <text user-select class="title">{{mData.rowE}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleF}}</view>
+            <text  class="title-name" user-select>{{mData.titleF}}</text>
             <text user-select class="title">{{mData.rowF}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleG}}</view>
+            <text  class="title-name" user-select>{{mData.titleG}}</text>
             <text user-select class="title">{{mData.rowG}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleH}}</view>
+            <text  class="title-name" user-select>{{mData.titleH}}</text>
             <text user-select class="title">{{mData.rowH}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleI}}</view>
+            <text  class="title-name" user-select>{{mData.titleI}}</text>
             <text user-select class="title">{{mData.rowI}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleJ}}</view>
+            <text  class="title-name" user-select>{{mData.titleJ}}</text>
             <text user-select class="title">{{mData.rowJ}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleK}}</view>
+            <text  class="title-name" user-select>{{mData.titleK}}</text>
             <text user-select class="title">{{mData.rowK}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleL}}</view>
+            <text  class="title-name" user-select>{{mData.titleL}}</text>
             <text user-select class="title">{{mData.rowL}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleM}}</view>
+            <text  class="title-name" user-select>{{mData.titleM}}</text>
             <text user-select class="title">{{mData.rowM}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleN}}</view>
+            <text  class="title-name" user-select>{{mData.titleN}}</text>
             <text user-select class="title">{{mData.rowN}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleO}}</view>
+            <text  class="title-name" user-select>{{mData.titleO}}</text>
             <text user-select class="title">{{mData.rowO}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleP}}</view>
+            <text  class="title-name" user-select>{{mData.titleP}}</text>
             <text user-select class="title">{{mData.rowP}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleQ}}</view>
+            <text  class="title-name" user-select>{{mData.titleQ}}</text>
             <text user-select class="title">{{mData.rowQ}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleR}}</view>
+            <text  class="title-name" user-select>{{mData.titleR}}</text>
             <text user-select class="title">{{mData.rowR}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleS}}</view>
+            <text  class="title-name" user-select>{{mData.titleS}}</text>
             <text user-select class="title">{{mData.rowS}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleT}}</view>
+            <text  class="title-name" user-select>{{mData.titleT}}</text>
             <text user-select class="title">{{mData.rowT}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleU}}</view>
+            <text  class="title-name" user-select>{{mData.titleU}}</text>
             <text user-select class="title">{{mData.rowU}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleV}}</view>
+            <text  class="title-name" user-select>{{mData.titleV}}</text>
             <text user-select class="title">{{mData.rowV}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleW}}</view>
+            <text  class="title-name" user-select>{{mData.titleW}}</text>
             <text user-select class="title">{{mData.rowW}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleX}}</view>
+            <text  class="title-name" user-select>{{mData.titleX}}</text>
             <text user-select class="title">{{mData.rowX}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleY}}</view>
+            <text  class="title-name" user-select>{{mData.titleY}}</text>
             <text user-select class="title">{{mData.rowY}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleZ}}</view>
+            <text  class="title-name" user-select>{{mData.titleZ}}</text>
             <text user-select class="title">{{mData.rowZ}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleAA}}</view>
+            <text  class="title-name" user-select>{{mData.titleAA}}</text>
             <text user-select class="title">{{mData.rowAA}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleAB}}</view>
+            <text  class="title-name" user-select>{{mData.titleAB}}</text>
             <text user-select class="title">{{mData.rowAB}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleAC}}</view>
+            <text  class="title-name" user-select>{{mData.titleAC}}</text>
             <text user-select class="title">{{mData.rowAC}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleAD}}</view>
+            <text  class="title-name" user-select>{{mData.titleAD}}</text>
             <text user-select class="title">{{mData.rowAD}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleAE}}</view>
+            <text  class="title-name" user-select>{{mData.titleAE}}</text>
             <text user-select class="title">{{mData.rowAE}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleAF}}</view>
+            <text  class="title-name" user-select>{{mData.titleAF}}</text>
             <text user-select class="title">{{mData.rowAF}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleAG}}</view>
+            <text  class="title-name" user-select>{{mData.titleAG}}</text>
             <text user-select class="title">{{mData.rowAG}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleAH}}</view>
+            <text  class="title-name" user-select>{{mData.titleAH}}</text>
             <text user-select class="title">{{mData.rowAH}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleAI}}</view>
+            <text  class="title-name" user-select>{{mData.titleAI}}</text>
             <text user-select class="title">{{mData.rowAI}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleAJ}}</view>
+            <text  class="title-name" user-select>{{mData.titleAJ}}</text>
             <text user-select class="title">{{mData.rowAJ}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleAK}}</view>
+            <text  class="title-name" user-select>{{mData.titleAK}}</text>
             <text user-select class="title">{{mData.rowAK}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleAL}}</view>
+            <text  class="title-name" user-select>{{mData.titleAL}}</text>
             <text user-select class="title">{{mData.rowAL}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleAM}}</view>
+            <text  class="title-name" user-select>{{mData.titleAM}}</text>
             <text user-select class="title">{{mData.rowAM}}</text>
         </view>
         <view class="titles-list">
-            <view class="title-name">{{mData.titleAN}}</view>
+            <text  class="title-name" user-select>{{mData.titleAN}}</text>
             <text user-select class="title">{{mData.rowAN}}</text>
         </view>
 

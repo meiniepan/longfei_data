@@ -46,6 +46,9 @@ Page({
     })
   },
   jiexi(fileId) {
+    wx.showLoading({
+      title: '解析中……',
+    })
     wx.cloud.callFunction({
       name: "excel",
       data: {fileID:fileId},
@@ -53,7 +56,7 @@ Page({
         wx.hideLoading()
         wx.showToast({
           icon: 'success',
-          title: '解析并上传成功'
+          title: '解析并入库成功'
         })
         wx.cloud.deleteFile({
           fileList:[fileId]

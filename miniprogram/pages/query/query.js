@@ -11,6 +11,9 @@ Page({
      * 页面的初始数据
      */
     data: {
+        nHeight:app.globalData.navigationHeight+20,
+        iHeight:app.globalData.navigationHeight-20,
+        icon:"1",
         isEmpty: true,
         number: '',
         mData: {
@@ -79,6 +82,17 @@ Page({
             }
         }
     },
+
+    /**
+     * 生命周期函数--监听页面显示
+     */
+    onShow() {
+let n = new Date().getTime()
+        this.setData({
+            icon:n%5,
+        })
+    },
+
     doSearch(e) {
         let key = e.detail.value
         if (key.length > 0) {
@@ -188,12 +202,7 @@ Page({
 
     },
 
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow() {
 
-    },
 
     /**
      * 生命周期函数--监听页面隐藏

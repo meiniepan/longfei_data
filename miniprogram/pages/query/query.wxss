@@ -1,14 +1,22 @@
 /* pages/query/query.wxss */
+.bac{
+    width: 150rpx;
+    height: 150rpx;
+    position: fixed;
+    z-index: 0;
+    left: 100rpx;
+}
 .search-area {
     display: flex;
     height: 80rpx;
-    margin: 20rpx var(--titlePadding);
+    margin: 20rpx var(--titlePadding) 20rpx;
     padding-left: 34rpx;
     padding-right: 34rpx;
     background: var(--tintBac);
     align-items: center;
     box-sizing: border-box;
     border-radius: 40rpx;
+    z-index: 1;
     flex-shrink: 0;
 }
 
@@ -34,8 +42,7 @@
 .title-name {
     display: flex;
     color: var(--tiffany);
-    font-size: 30rpx;
-    max-width: 50%;
+    max-width: 60%;
     flex-shrink: 0;
 }
 
@@ -43,5 +50,4 @@
 .title {
     color: var(--commonHint);
     margin-left: 50rpx;
-
 }

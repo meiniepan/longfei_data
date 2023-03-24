@@ -1,6 +1,6 @@
 <!--pages/mine/mine.wxml-->
 <view class="out">
-    <image class="bac" src="../../images/house.svg" mode="aspectFill"/>
+    <image class="bac" src="../../images/house_1.svg" mode="aspectFill"/>
     <button type="primary" style="margin-top: 280rpx" bindtap="upload">上传数据</button>
 </view>
 

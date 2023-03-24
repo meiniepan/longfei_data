@@ -34,8 +34,7 @@
 .title-name {
     display: flex;
     color: var(--tiffany);
-    font-size: 30rpx;
-    max-width: 50%;
+    max-width: 60%;
     flex-shrink: 0;
 }
 
