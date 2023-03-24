@@ -11,9 +11,9 @@ Page({
      * 页面的初始数据
      */
     data: {
-        nHeight:app.globalData.navigationHeight+20,
-        iHeight:app.globalData.navigationHeight-20,
-        icon:"1",
+        nHeight: app.globalData.navigationHeight + 20,
+        iHeight: app.globalData.navigationHeight - 20,
+        icon: "1",
         isEmpty: true,
         number: '',
         mData: {
@@ -64,9 +64,12 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        let n = new Date().getTime()
+        this.setData({
+            icon: n % 5,
+        })
         if (!isEmpty(options.num)) {
             number = options.num
-            this.setStorageNum()
             console.log("number", number)
             this.getInfo()
         } else {
@@ -87,17 +90,13 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-let n = new Date().getTime()
-        this.setData({
-            icon:n%5,
-        })
+
     },
 
     doSearch(e) {
         let key = e.detail.value
         if (key.length > 0) {
             number = key
-            this.setStorageNum()
             this.getInfo()
         }
     },
@@ -107,6 +106,7 @@ let n = new Date().getTime()
     },
 
     setStorageDetail() {
+        this.setStorageNum()
         console.log("query_detail", this.data.mData)
         wx.setStorageSync('query_detail', JSON.stringify(this.data.mData))
     },
@@ -166,11 +166,11 @@ let n = new Date().getTime()
                     this.data.mData.rowAL = data.rowAL
                     this.data.mData.rowAM = data.rowAM
                     this.data.mData.rowAN = data.rowAN
-                    console.log("this.data.mData",this.data.mData)
+                    console.log("this.data.mData", this.data.mData)
                     this.setData({
                         mData: this.data.mData,
                         isEmpty: false,
-                    },()=>{
+                    }, () => {
                         this.setStorageDetail()
                     })
 
@@ -201,7 +201,6 @@ let n = new Date().getTime()
     onReady() {
 
     },
-
 
 
     /**

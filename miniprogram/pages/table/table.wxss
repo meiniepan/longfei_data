@@ -107,7 +107,7 @@
 }
 
 .title-all{
-    color: var(--commonHint);
+    color: var(--white);
     margin-left: 50rpx;
 
 }

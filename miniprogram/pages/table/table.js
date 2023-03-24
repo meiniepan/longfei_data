@@ -132,7 +132,7 @@ Page({
             this.data.filterData[filterPosition].checkData = []
             let condition = {}
             let n = 0
-            if (filterPosition == 5 || filterPosition == 7) {  //县、小类
+            if (filterPosition == 1 || filterPosition == 5 || filterPosition == 7) {  //ssjt、县、小类
                 let it = this.data.filterData[filterPosition - 1].checkData
                 if (it != null) {
                     let array = []
@@ -239,7 +239,7 @@ Page({
 
 
         if (n > 0) {
-            if (filterPosition == 4 || filterPosition == 6) {  //县、小类
+            if (filterPosition == 0 ||filterPosition == 4 || filterPosition == 6) {  //县、小类
                 let it = this.data.filterData[filterPosition + 1]
                 it.val = ''
                 it.checkData = null

@@ -1,5 +1,74 @@
 <!--pages/splash/splash.wxml-->
-<image class="bac" src="../../images/rain2.svg" mode="aspectFill"/>
 <view class="out">
-    <view class="title">龙飞数据</view>
+    <image class="bac" src="../../images/rain2.svg" mode="aspectFill"/>
+
+    <view class="box">
+        <view class="preloader">
+            <view class="preloader__ring">
+                <view class="preloader__sector">龙</view>
+                <view class="preloader__sector">.</view>
+                <view class="preloader__sector">飞</view>
+                <view class="preloader__sector">.</view>
+                <view class="preloader__sector">.</view>
+                <view class="preloader__sector">.</view>
+                <view class="preloader__sector">.</view>
+                <view class="preloader__sector">.</view>
+                <view class="preloader__sector">.</view>
+                <view class="preloader__sector">.</view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+            </view>
+            <view class="preloader__ring">
+                <view class="preloader__sector">l</view>
+                <view class="preloader__sector">o</view>
+                <view class="preloader__sector">n</view>
+                <view class="preloader__sector">g</view>
+                <view class="preloader__sector">f</view>
+                <view class="preloader__sector">e</view>
+                <view class="preloader__sector">i</view>
+                <view class="preloader__sector">.</view>
+                <view class="preloader__sector">.</view>
+                <view class="preloader__sector">.</view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+                <view class="preloader__sector"></view>
+            </view>
+        </view>
+    </view>
+
 </view>

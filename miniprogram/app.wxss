@@ -18,6 +18,7 @@ page {
   --grayEE: #EEEEEE;
   --orange: #FF9040;
   --tiffany: #81D8D0;
+  --accent: #E040FB;
   --themeBac: linear-gradient(to right,#445FF5,#6D0BBD);
   --titlePadding: 46rpx;
   --textHeight: 88rpx;
@@ -25,6 +26,7 @@ page {
   --maxTextWidth: 300rpx;
 
   font-size: 32rpx;
+  word-break: break-all;
 }
 ::-webkit-scrollbar {
   width: 0;

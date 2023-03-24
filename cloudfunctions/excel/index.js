@@ -64,11 +64,12 @@ exports.main = async (event, context) => {
                 }
                 //2
                 let row_ssjt = row[33]
+
                 if (!isEmpty(row_ssjt)) {
                     if (data_ssjt.has(row_ssjt)) {
-                        data_ssjt.set(row_ssjt, data_ssjt.get(row_ssjt) + 1)
+                        data_ssjt.set(row_ssjt, {parent:row_qylx,total:data_ssjt.get(row_ssjt).total + 1})
                     } else {
-                        data_ssjt.set(row_ssjt, 1)
+                        data_ssjt.set(row_ssjt, {parent:row_qylx,total:1})
                     }
                 }
                 //3
@@ -245,7 +246,7 @@ exports.main = async (event, context) => {
     let array_2 = []
     console.error(data_ssjt)
     data_ssjt.forEach((val, key) => {
-        array_2.push({name: key, total: val})
+        array_2.push({name: key,parent:val.parent, total: val.total})
     })
     console.error("array_2", array_2)
     var result_2 = await db.collection(table_2).add({data: array_2}).then(res => {
