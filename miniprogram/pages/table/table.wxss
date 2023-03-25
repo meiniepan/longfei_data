@@ -170,7 +170,6 @@
 .title-name {
     display: flex;
     color: var(--tiffany);
-    font-size: 36rpx;
     flex-shrink: 0;
 }
 
