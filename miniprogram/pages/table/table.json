@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "scroll": "/components/scroll/scroll",
     "emptyView": "/components/emptyView/emptyView",
     "navigation": "/components/navigation/navigation"
   },

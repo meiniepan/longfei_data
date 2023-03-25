@@ -59,12 +59,12 @@
     </view>
     <emptyView wx:if="{{isEmpty}}"/>
     <scroll-view class="cells-page" wx:if="{{pageData.length>1}}" enable-flex scroll-x>
-        <view class="cell-page" wx:for="{{pageData}}" wx:key="index" data-index="{{index}}" catchtap="queryPage">
+        <view class="cell-page" wx:for="{{pageData}}" wx:key="index" data-index="{{index}}" bindtap="queryPage">
                 <view class="{{item.checked?'title-page-checked':'title-page'}}">{{item.name}}</view>
         </view>
     </scroll-view>
     <view class="cells-list">
-        <view class="cell-list" wx:for="{{listData}}" wx:key="index" data-num="{{item.value_8}}"  catchtap="queryDetail">
+        <view class="cell-list" wx:for="{{listData}}" wx:key="index" data-num="{{item.value_8}}"  bindtap="queryDetail">
             <view class="titles-list">
                 <view class="title-name">{{mData[8].name}}</view>
                 <view class="title">{{item.value_8}}</view>
